@@ -1,3 +1,5 @@
+// Copyright 2022 Krzysztof Karbowiak
+
 #pragma once
 
 #include "board.h"

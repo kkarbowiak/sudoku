@@ -1,3 +1,5 @@
+// Copyright 2022 Krzysztof Karbowiak
+
 #include "Board.h"
 #include "Solver.h"
 
