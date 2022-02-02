@@ -94,12 +94,9 @@ inline auto Board::is_solved() const
         return false;
     }
 
-    for (auto v : m_values)
+    if (std::any_of(m_values.begin(), m_values.end(), [this](auto value){ return std::none_of(m_options.begin(), m_options.end(), [value](auto option){ return option.has(value); }); }))
     {
-        if (std::none_of(m_options.begin(), m_options.end(), [v](auto option){ return option.has(v); }))
-        {
-            return false;
-        }
+        return false;
     }
 
     return true;
