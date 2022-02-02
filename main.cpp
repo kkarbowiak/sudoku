@@ -1,7 +1,7 @@
 // Copyright 2022 Krzysztof Karbowiak
 
-#include "Board.h"
-#include "Solver.h"
+#include "board.h"
+#include "solver.h"
 
 #include <iostream>
 
