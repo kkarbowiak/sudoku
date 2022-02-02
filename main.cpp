@@ -1,6 +1,6 @@
 // Copyright 2022 Krzysztof Karbowiak
 
-#include "board.h"
+#include "board_mini.h"
 #include "solver.h"
 
 #include <iostream>

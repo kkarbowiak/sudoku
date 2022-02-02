@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "board.h"
+#include "board_mini.h"
 
 #include <vector>
 
