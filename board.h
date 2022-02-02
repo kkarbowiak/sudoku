@@ -143,7 +143,7 @@ inline auto Board::is_solved() const
 
 auto Board::is_row_solved(int row) const -> bool
 {
-    for (auto v = 1; v <= 9; ++v)
+    for (auto v : m_values)
     {
         if (std::none_of(m_options[row].begin(), m_options[row].end(), [v](auto option){ return option.has(v); }))
         {
@@ -155,7 +155,7 @@ auto Board::is_row_solved(int row) const -> bool
 
 auto Board::is_column_solved(int column) const -> bool
 {
-    for (auto v = 1; v <= 9; ++v)
+    for (auto v : m_values)
     {
         bool found = false;
         for (int r = 0; r < 9; ++r)
