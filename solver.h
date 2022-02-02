@@ -26,9 +26,9 @@ inline auto Solver::solve(Board board)
         return;
     }
 
-    for (auto y = 0; y < 3; ++y)
+    for (auto y = 0; y < board.height(); ++y)
     {
-        for (auto x = 0; x < 3; ++x)
+        for (auto x = 0; x < board.width(); ++x)
         {
             if (!board.is_fixed_at(x, y))
             {
