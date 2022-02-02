@@ -33,7 +33,7 @@ class Board
         static constexpr auto m_width = 9;
         static constexpr auto m_height = 9;
         static constexpr std::array m_values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        std::array<std::array<Options, 9>, 9> m_options;
+        std::array<std::array<Options, m_width>, m_height> m_options;
 };
 
 constexpr auto Board::width()
