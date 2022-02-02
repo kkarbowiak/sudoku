@@ -29,6 +29,8 @@ class Board
         auto is_column_solved(int column) const -> bool;
         auto is_square_solved(int square) const -> bool;
 
+        static auto round_coord(int coord) -> int;
+
     private:
         static constexpr auto m_width = 9;
         static constexpr auto m_height = 9;
@@ -104,9 +106,11 @@ inline auto Board::fix_option(int x, int y, int value)
         }
     }
 
-    for (auto yy = 3 * (y / 3); yy < 3 * (y / 3) + 3; ++yy)
+    auto const y_start = round_coord(y);
+    auto const x_start = round_coord(x);
+    for (auto yy = y_start; yy < y_start + 3; ++yy)
     {
-        for (auto xx = 3 * (x / 3); xx < 3 * (x / 3) + 3; ++xx)
+        for (auto xx = x_start; xx < x_start + 3; ++xx)
         {
             if (yy != y && xx != x)
             {
@@ -378,4 +382,9 @@ auto Board::is_square_solved(int square) const -> bool
         }
     }
     return false;
+}
+
+auto Board::round_coord(int coord) -> int
+{
+    return 3 * (coord / 3);
 }
