@@ -158,7 +158,7 @@ auto Board::is_column_solved(int column) const -> bool
     for (auto v : m_values)
     {
         bool found = false;
-        for (int r = 0; r < 9; ++r)
+        for (int r = 0; r < m_width; ++r)
         {
             if (m_options[column][r].has(v))
             {
