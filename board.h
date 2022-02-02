@@ -24,6 +24,9 @@ class Board
         auto is_solved() const;
 
     private:
+        auto index(int x, int y) const -> int;
+
+    private:
         static constexpr auto m_width = 3;
         static constexpr auto m_height = 3;
         std::array<Options, m_width * m_height> m_options;
@@ -51,12 +54,12 @@ inline auto Board::is_valid() const
 
 inline auto Board::has_option(int x, int y, int value) const
 {
-    return m_options[y * m_width + x].has(value);
+    return m_options[index(x, y)].has(value);
 }
 
 inline auto Board::is_fixed_at(int x, int y) const
 {
-    return m_options[y * m_width + x].is_fixed();
+    return m_options[index(x, y)].is_fixed();
 }
 
 inline auto Board::fix_option(int x, int y, int value)
@@ -67,11 +70,11 @@ inline auto Board::fix_option(int x, int y, int value)
         {
             if (yy == y && xx == x)
             {
-                m_options[yy * m_width + xx].fix(value);
+                m_options[index(xx, yy)].fix(value);
             }
             else
             {
-                m_options[yy * m_width + xx].remove(value);
+                m_options[index(xx, yy)].remove(value);
             }
         }
     }
@@ -93,4 +96,9 @@ inline auto Board::is_solved() const
     }
 
     return true;
+}
+
+inline auto Board::index(int x, int y) const -> int
+{
+    return y * m_width + x;
 }
