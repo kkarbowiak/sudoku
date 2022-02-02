@@ -53,3 +53,16 @@ TEST_CASE("Board initially contains all options in all positions")
         }
     }
 }
+
+TEST_CASE("Board initially is not fixed anywhere")
+{
+    Board const board;
+
+    for (auto y = 0; y < board.height(); ++y)
+    {
+        for (auto x = 0; x < board.width(); ++x)
+        {
+            REQUIRE(!board.is_fixed_at(x, y));
+        }
+    }
+}
