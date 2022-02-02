@@ -6,9 +6,9 @@
 #include <iostream>
 
 
-Board read_board(std::string input)
+BoardMini read_board(std::string input)
 {
-    Board board;
+    BoardMini board;
 
     auto pos = 0;
     for (auto v : input)
@@ -25,7 +25,7 @@ Board read_board(std::string input)
 
 int main(int argc, char * argv[])
 {
-    auto board = argc > 1 ? read_board(argv[1]) : Board();
+    auto board = argc > 1 ? read_board(argv[1]) : BoardMini();
 
     auto solver = Solver();
     solver.solve(board);

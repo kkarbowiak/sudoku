@@ -10,15 +10,15 @@
 class Solver
 {
     public:
-        auto solve(Board board);
+        auto solve(BoardMini board);
 
         auto get_solutions() const;
 
     private:
-        std::vector<Board> m_solutions;
+        std::vector<BoardMini> m_solutions;
 };
 
-inline auto Solver::solve(Board board)
+inline auto Solver::solve(BoardMini board)
 {
     if (board.is_solved())
     {

@@ -8,7 +8,7 @@
 #include <algorithm>
 
 
-class Board
+class BoardMini
 {
     public:
         constexpr auto width();
@@ -34,42 +34,42 @@ class Board
         std::array<Options, m_width * m_height> m_options;
 };
 
-constexpr auto Board::width()
+constexpr auto BoardMini::width()
 {
     return m_width;
 }
 
-constexpr auto Board::height()
+constexpr auto BoardMini::height()
 {
     return m_height;
 }
 
-constexpr auto Board::options()
+constexpr auto BoardMini::options()
 {
     return m_values;
 }
 
-inline auto Board::is_fixed() const
+inline auto BoardMini::is_fixed() const
 {
     return std::all_of(m_options.begin(), m_options.end(), [](auto option){ return option.is_fixed(); });
 }
 
-inline auto Board::is_valid() const
+inline auto BoardMini::is_valid() const
 {
     return std::none_of(m_options.begin(), m_options.end(), [](auto option){ return option.is_empty(); });
 }
 
-inline auto Board::has_option(int x, int y, int value) const
+inline auto BoardMini::has_option(int x, int y, int value) const
 {
     return m_options[index(x, y)].has(value);
 }
 
-inline auto Board::is_fixed_at(int x, int y) const
+inline auto BoardMini::is_fixed_at(int x, int y) const
 {
     return m_options[index(x, y)].is_fixed();
 }
 
-inline auto Board::fix_option(int x, int y, int value)
+inline auto BoardMini::fix_option(int x, int y, int value)
 {
     for (auto yy = 0; yy < m_height; ++yy)
     {
@@ -87,7 +87,7 @@ inline auto Board::fix_option(int x, int y, int value)
     }
 }
 
-inline auto Board::is_solved() const
+inline auto BoardMini::is_solved() const
 {
     if (!is_fixed())
     {
@@ -102,7 +102,7 @@ inline auto Board::is_solved() const
     return true;
 }
 
-inline auto Board::index(int x, int y) const -> int
+inline auto BoardMini::index(int x, int y) const -> int
 {
     return y * m_width + x;
 }
