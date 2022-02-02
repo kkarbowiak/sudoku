@@ -3,6 +3,20 @@
 #include "doctest.h"
 
 
+TEST_CASE("Board has width of 9")
+{
+    Board board;
+
+    REQUIRE(board.width() == 9);
+}
+
+TEST_CASE("Board has a height of 9")
+{
+    Board board;
+
+    REQUIRE(board.height() == 9);
+}
+
 TEST_CASE("Board initially contains all options in all positions")
 {
     Board board;
