@@ -26,7 +26,7 @@ class Board
     private:
         static constexpr auto m_width = 3;
         static constexpr auto m_height = 3;
-        std::array<Options, 9> m_options;
+        std::array<Options, m_width * m_height> m_options;
 };
 
 constexpr auto Board::width()
