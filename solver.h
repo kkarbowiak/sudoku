@@ -2,23 +2,23 @@
 
 #pragma once
 
-#include "board_mini.h"
-
 #include <vector>
 
 
+template<class Board>
 class Solver
 {
     public:
-        auto solve(BoardMini board);
+        auto solve(Board board);
 
         auto get_solutions() const;
 
     private:
-        std::vector<BoardMini> m_solutions;
+        std::vector<Board> m_solutions;
 };
 
-inline auto Solver::solve(BoardMini board)
+template<class Board>
+inline auto Solver<Board>::solve(Board board)
 {
     if (board.is_solved())
     {
@@ -50,7 +50,8 @@ inline auto Solver::solve(BoardMini board)
     }
 }
 
-inline auto Solver::get_solutions() const
+template<class Board>
+inline auto Solver<Board>::get_solutions() const
 {
     return m_solutions;
 }

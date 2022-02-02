@@ -27,7 +27,7 @@ int main(int argc, char * argv[])
 {
     auto board = argc > 1 ? read_board(argv[1]) : BoardMini();
 
-    auto solver = Solver();
+    auto solver = Solver<BoardMini>();
     solver.solve(board);
 
     std::cout << "Number of solutions: " << solver.get_solutions().size() << '\n';
