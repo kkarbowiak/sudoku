@@ -10,7 +10,7 @@ Board read_board(std::string input)
 {
     Board board;
 
-    int pos = 0;
+    auto pos = 0;
     for (auto v : input)
     {
         if (v != '0')
