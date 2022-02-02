@@ -32,7 +32,7 @@ inline auto Solver::solve(Board board)
         {
             if (!board.is_fixed_at(x, y))
             {
-                for (auto v = 1; v <= 9; ++v)
+                for (auto v : board.options())
                 {
                     if (board.has_option(x, y, v))
                     {

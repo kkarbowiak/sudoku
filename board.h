@@ -13,6 +13,7 @@ class Board
     public:
         constexpr auto width();
         constexpr auto height();
+        constexpr auto options();
 
         auto is_fixed() const;
         auto is_valid() const;
@@ -41,6 +42,11 @@ constexpr auto Board::width()
 constexpr auto Board::height()
 {
     return m_height;
+}
+
+constexpr auto Board::options()
+{
+    return m_values;
 }
 
 inline auto Board::is_fixed() const
