@@ -11,9 +11,9 @@
 class Board
 {
     public:
-        constexpr auto width() const;
-        constexpr auto height() const;
-        constexpr auto options() const;
+        static constexpr auto width();
+        static constexpr auto height();
+        static constexpr auto options();
 
         auto is_fixed() const;
         auto is_valid() const;
@@ -36,17 +36,17 @@ class Board
         std::array<std::array<Options, m_width>, m_height> m_options;
 };
 
-constexpr auto Board::width() const
+constexpr auto Board::width()
 {
     return m_width;
 }
 
-constexpr auto Board::height() const
+constexpr auto Board::height()
 {
     return m_height;
 }
 
-constexpr auto Board::options() const
+constexpr auto Board::options()
 {
     return m_values;
 }

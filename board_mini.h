@@ -11,9 +11,9 @@
 class BoardMini
 {
     public:
-        constexpr auto width() const;
-        constexpr auto height() const;
-        constexpr auto options() const;
+        static constexpr auto width();
+        static constexpr auto height();
+        static constexpr auto options();
 
         auto is_fixed() const;
         auto is_valid() const;
@@ -34,17 +34,17 @@ class BoardMini
         std::array<Options, m_width * m_height> m_options;
 };
 
-constexpr auto BoardMini::width() const
+constexpr auto BoardMini::width()
 {
     return m_width;
 }
 
-constexpr auto BoardMini::height() const
+constexpr auto BoardMini::height()
 {
     return m_height;
 }
 
-constexpr auto BoardMini::options() const
+constexpr auto BoardMini::options()
 {
     return m_values;
 }

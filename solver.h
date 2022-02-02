@@ -26,13 +26,13 @@ inline auto Solver<Board>::solve(Board board)
         return;
     }
 
-    for (auto y = 0; y < board.height(); ++y)
+    for (auto y = 0; y < Board::height(); ++y)
     {
-        for (auto x = 0; x < board.width(); ++x)
+        for (auto x = 0; x < Board::width(); ++x)
         {
             if (!board.is_fixed_at(x, y))
             {
-                for (auto v : board.options())
+                for (auto v : Board::options())
                 {
                     if (board.has_option(x, y, v))
                     {
