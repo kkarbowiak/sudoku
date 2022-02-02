@@ -15,7 +15,7 @@ Board read_board(std::string input)
     {
         if (v != '0')
         {
-            board.fix_option(pos % 3, pos / 3, v - '0');
+            board.fix_option(pos % board.width(), pos / board.width(), v - '0');
         }
         ++pos;
     }
