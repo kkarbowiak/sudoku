@@ -29,6 +29,7 @@ class Board
     private:
         static constexpr auto m_width = 3;
         static constexpr auto m_height = 3;
+        static constexpr std::array m_values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         std::array<Options, m_width * m_height> m_options;
 };
 
@@ -87,7 +88,7 @@ inline auto Board::is_solved() const
         return false;
     }
 
-    for (auto v = 1; v <= 9; ++v)
+    for (auto v : m_values)
     {
         if (std::none_of(m_options.begin(), m_options.end(), [v](auto option){ return option.has(v); }))
         {
