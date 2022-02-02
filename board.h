@@ -89,14 +89,14 @@ inline auto Board::fix_option(int x, int y, int value)
 {
     m_options[y][x].fix(value);
 
-    for (auto xx = 0; xx < 9; ++xx)
+    for (auto xx = 0; xx < m_width; ++xx)
     {
         if (xx != x)
         {
             m_options[y][xx].remove(value);
         }
     }
-    for (auto yy = 0; yy < 9; ++yy)
+    for (auto yy = 0; yy < m_height; ++yy)
     {
         if (yy != y)
         {
