@@ -55,14 +55,13 @@ constexpr auto Board::options()
 
 inline auto Board::is_fixed() const
 {
-    for (auto const & row : m_options)
-    {
-        if (!std::all_of(row.begin(), row.end(), [](auto option){ return option.is_fixed(); }))
-        {
-            return false;
-        }
-    }
-    return true;
+    return std::all_of(
+        m_options.begin(),
+        m_options.end(),
+        [](auto const & row){ return std::all_of(
+            row.begin(),
+            row.end(),
+            [](auto const & option){ return option.is_fixed(); }); });
 }
 
 inline auto Board::is_valid() const
