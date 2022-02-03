@@ -110,7 +110,7 @@ inline auto Board::fix_option(int x, int y, int value)
     {
         for (auto xx = x_start; xx < x_start + 3; ++xx)
         {
-            if (yy != y && xx != x)
+            if (yy != y || xx != x)
             {
                 m_options[yy][xx].remove(value);
             }
