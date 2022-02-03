@@ -6,6 +6,7 @@
 
 #include <string>
 #include <vector>
+#include <chrono>
 #include <iostream>
 
 
@@ -57,18 +58,26 @@ int main(int argc, char * argv[])
             auto board = argc > 2 ? read_board_mini(argv[2]) : BoardMini();
 
             auto solver = Solver<BoardMini>();
+            auto const begin = std::chrono::steady_clock::now();
             solver.solve(board);
+            auto const end = std::chrono::steady_clock::now();
+            std::chrono::duration<double> const diff = end - begin;
 
             std::cout << "Number of solutions: " << solver.get_solutions().size() << '\n';
+            std::cout << "Took: " << diff.count() << " seconds.\n";
         }
         else
         {
             auto board = argc > 2 ? read_board(std::vector<std::string>(&argv[2], &argv[argc])) : Board();
             auto solver = Solver<Board>();
 
+            auto const begin = std::chrono::steady_clock::now();
             solver.solve(board);
+            auto const end = std::chrono::steady_clock::now();
+            std::chrono::duration<double> const diff = end - begin;
 
             std::cout << "Number of solutions: " << solver.get_solutions().size() << '\n';
+            std::cout << "Took: " << diff.count() << " seconds.\n";
         }
     }
     
