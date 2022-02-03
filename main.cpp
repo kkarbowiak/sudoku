@@ -80,5 +80,4 @@ int main(int argc, char * argv[])
             std::cout << "Took: " << diff.count() << " seconds.\n";
         }
     }
-    
 }
