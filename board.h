@@ -66,14 +66,13 @@ inline auto Board::is_fixed() const
 
 inline auto Board::is_valid() const
 {
-    for (auto const & row : m_options)
-    {
-        if (std::any_of(row.begin(), row.end(), [](auto option){ return option.is_empty(); }))
-        {
-            return false;
-        }
-    }
-    return true;
+    return std::all_of(
+        m_options.begin(),
+        m_options.end(),
+        [](auto const & row){ return std::none_of(
+            row.begin(),
+            row.end(),
+            [](auto const & option){ return option.is_empty(); }); });
 }
 
 inline auto Board::has_option(int x, int y, int value) const
