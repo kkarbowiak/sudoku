@@ -14,11 +14,26 @@ class Solver
         auto get_solutions() const;
 
     private:
+        auto solve(Board board, int x, int y);
+
+    private:
         std::vector<Board> m_solutions;
 };
 
 template<class Board>
 inline auto Solver<Board>::solve(Board board)
+{
+    solve(board, 0, 0);
+}
+
+template<class Board>
+inline auto Solver<Board>::get_solutions() const
+{
+    return m_solutions;
+}
+
+template<class Board>
+inline auto Solver<Board>::solve(Board board, int x, int y)
 {
     if (board.is_solved())
     {
@@ -26,32 +41,27 @@ inline auto Solver<Board>::solve(Board board)
         return;
     }
 
-    for (auto y = 0; y < Board::height(); ++y)
+    for (auto yy = y; yy < Board::height(); ++yy)
     {
-        for (auto x = 0; x < Board::width(); ++x)
+        for (auto xx = x; xx < Board::width(); ++xx)
         {
-            if (!board.is_fixed_at(x, y))
+            if (!board.is_fixed_at(xx, yy))
             {
                 for (auto v : Board::options())
                 {
-                    if (board.has_option(x, y, v))
+                    if (board.has_option(xx, yy, v))
                     {
                         auto copy = board;
-                        copy.fix_option(x, y, v);
+                        copy.fix_option(xx, yy, v);
                         if (copy.is_valid())
                         {
-                            solve(copy);
+                            solve(copy, xx, yy);
                         }
                     }
                 }
                 return;
             }
         }
+        x = 0;
     }
-}
-
-template<class Board>
-inline auto Solver<Board>::get_solutions() const
-{
-    return m_solutions;
 }
