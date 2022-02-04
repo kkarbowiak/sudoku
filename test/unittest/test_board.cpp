@@ -67,6 +67,21 @@ TEST_CASE("Board initially is not fixed anywhere")
     }
 }
 
+TEST_CASE("Fixing a value at x,y makes the position fixed")
+{
+    for (auto y = 0; y < Board::height(); ++y)
+    {
+        for (auto x = 0; x < Board::width(); ++x)
+        {
+            Board board;
+
+            board.fix_option(x, y, Board::options().front());
+
+            REQUIRE(board.is_fixed_at(x, y));
+        }
+    }
+}
+
 TEST_CASE("Fixing a value at x,y removes it from x-column and y-row")
 {
     for (auto y = 0; y < Board::height(); ++y)
