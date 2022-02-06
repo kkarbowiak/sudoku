@@ -12,7 +12,7 @@ TEST_CASE("Board has options of 1..9")
 
 TEST_CASE("Options initially contains values 1..9")
 {
-    Options options;
+    Options const options;
 
     REQUIRE(options.has(1u));
     REQUIRE(options.has(2u));
