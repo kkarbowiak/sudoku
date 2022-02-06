@@ -41,27 +41,29 @@ inline auto Solver<Board>::solve(Board board, unsigned int x, unsigned int y)
         return;
     }
 
-    for (auto yy = y; yy < Board::height(); ++yy)
+    while(y < Board::height())
     {
-        for (auto xx = x; xx < Board::width(); ++xx)
+        while(x < Board::width())
         {
-            if (!board.is_fixed_at(xx, yy))
+            if (!board.is_fixed_at(x, y))
             {
                 for (auto v : Board::options())
                 {
-                    if (board.has_option(xx, yy, v))
+                    if (board.has_option(x, y, v))
                     {
                         auto copy = board;
-                        copy.fix_option(xx, yy, v);
+                        copy.fix_option(x, y, v);
                         if (copy.is_valid())
                         {
-                            solve(copy, xx, yy);
+                            solve(copy, x, y);
                         }
                     }
                 }
                 return;
             }
+            ++x;
         }
         x = 0u;
+        ++y;
     }
 }
