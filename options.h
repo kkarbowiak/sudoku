@@ -2,12 +2,15 @@
 
 #pragma once
 
+#include <array>
 #include <bitset>
 
 
 class Options
 {
     public:
+        static constexpr auto options();
+
         auto fix(int value);
         auto remove(int value);
 
@@ -16,8 +19,14 @@ class Options
         auto has(int value) const;
 
     private:
+        static constexpr std::array m_values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         std::bitset<9> m_options = 0b111111111;
 };
+
+constexpr auto Options::options()
+{
+    return m_values;
+}
 
 inline auto Options::fix(int value)
 {
