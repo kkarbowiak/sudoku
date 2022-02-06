@@ -5,23 +5,17 @@
 
 TEST_CASE("Board has width of 9")
 {
-    Board const board;
-
-    REQUIRE(board.width() == 9);
+    REQUIRE(Board::width() == 9);
 }
 
 TEST_CASE("Board has a height of 9")
 {
-    Board const board;
-
-    REQUIRE(board.height() == 9);
+    REQUIRE(Board::height() == 9);
 }
 
 TEST_CASE("Board has options of 1..9")
 {
-    Board const board;
-
-    REQUIRE(board.options() == std::array{1u, 2u, 3u, 4u, 5u, 6u, 7u, 8u, 9u});
+    REQUIRE(Board::options() == std::array{1u, 2u, 3u, 4u, 5u, 6u, 7u, 8u, 9u});
 }
 
 TEST_CASE("Board initially is not fixed")
@@ -42,11 +36,11 @@ TEST_CASE("Board initially contains all options in all positions")
 {
     Board const board;
 
-    for (auto y = 0; y < board.height(); ++y)
+    for (auto y = 0; y < Board::height(); ++y)
     {
-        for (auto x = 0; x < board.width(); ++x)
+        for (auto x = 0; x < Board::width(); ++x)
         {
-            for (auto v : board.options())
+            for (auto v : Board::options())
             {
                 REQUIRE(board.has_option(x, y, v));
             }
@@ -58,9 +52,9 @@ TEST_CASE("Board initially is not fixed anywhere")
 {
     Board const board;
 
-    for (auto y = 0; y < board.height(); ++y)
+    for (auto y = 0; y < Board::height(); ++y)
     {
-        for (auto x = 0; x < board.width(); ++x)
+        for (auto x = 0; x < Board::width(); ++x)
         {
             REQUIRE(!board.is_fixed_at(x, y));
         }
