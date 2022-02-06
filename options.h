@@ -22,7 +22,7 @@ class Options
 
     private:
         static constexpr std::array m_values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        std::bitset<9> m_options = 0b111111111;
+        std::bitset<m_values.size()> m_options = 0b111111111;
 };
 
 constexpr auto Options::options()
