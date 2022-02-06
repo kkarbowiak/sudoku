@@ -34,7 +34,6 @@ class Board
     private:
         static constexpr auto m_width = 9;
         static constexpr auto m_height = 9;
-        static constexpr std::array m_values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         std::array<std::array<Options, m_width>, m_height> m_options;
 };
 
@@ -50,7 +49,7 @@ constexpr auto Board::height()
 
 constexpr auto Board::options()
 {
-    return m_values;
+    return Options::options();
 }
 
 inline auto Board::is_fixed() const
@@ -145,7 +144,7 @@ inline auto Board::is_solved() const
 
 auto Board::is_row_solved(int row) const -> bool
 {
-    for (auto v : m_values)
+    for (auto v : Options::options())
     {
         if (std::none_of(m_options[row].begin(), m_options[row].end(), [v](auto option){ return option.has(v); }))
         {
@@ -157,7 +156,7 @@ auto Board::is_row_solved(int row) const -> bool
 
 auto Board::is_column_solved(int column) const -> bool
 {
-    for (auto v : m_values)
+    for (auto v : Options::options())
     {
         bool found = false;
         for (int r = 0; r < m_width; ++r)
