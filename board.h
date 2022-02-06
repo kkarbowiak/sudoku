@@ -6,6 +6,7 @@
 
 #include <array>
 #include <algorithm>
+#include <cassert>
 
 
 class Board
@@ -76,16 +77,25 @@ inline auto Board::is_valid() const
 
 inline auto Board::has_option(int x, int y, int value) const
 {
+    assert(x < m_width);
+    assert(y < m_height);
+
     return m_options[y][x].has(value);
 }
 
 inline auto Board::is_fixed_at(int x, int y) const
 {
+    assert(x < m_width);
+    assert(y < m_height);
+
     return m_options[y][x].is_fixed();
 }
 
 inline auto Board::fix_option(int x, int y, int value)
 {
+    assert(x < m_width);
+    assert(y < m_height);
+
     m_options[y][x].fix(value);
 
     for (auto xx = 0; xx < m_width; ++xx)
