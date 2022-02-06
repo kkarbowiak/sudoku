@@ -36,9 +36,9 @@ TEST_CASE("Board initially contains all options in all positions")
 {
     Board const board;
 
-    for (auto y = 0; y < Board::height(); ++y)
+    for (auto y = 0u; y < Board::height(); ++y)
     {
-        for (auto x = 0; x < Board::width(); ++x)
+        for (auto x = 0u; x < Board::width(); ++x)
         {
             for (auto v : Board::options())
             {
@@ -52,9 +52,9 @@ TEST_CASE("Board initially is not fixed anywhere")
 {
     Board const board;
 
-    for (auto y = 0; y < Board::height(); ++y)
+    for (auto y = 0u; y < Board::height(); ++y)
     {
-        for (auto x = 0; x < Board::width(); ++x)
+        for (auto x = 0u; x < Board::width(); ++x)
         {
             REQUIRE(!board.is_fixed_at(x, y));
         }
@@ -63,9 +63,9 @@ TEST_CASE("Board initially is not fixed anywhere")
 
 TEST_CASE("Fixing a value at x,y makes the position fixed")
 {
-    for (auto y = 0; y < Board::height(); ++y)
+    for (auto y = 0u; y < Board::height(); ++y)
     {
-        for (auto x = 0; x < Board::width(); ++x)
+        for (auto x = 0u; x < Board::width(); ++x)
         {
             Board board;
 
@@ -78,16 +78,16 @@ TEST_CASE("Fixing a value at x,y makes the position fixed")
 
 TEST_CASE("Fixing a value at x,y removes it from x-column and y-row")
 {
-    for (auto y = 0; y < Board::height(); ++y)
+    for (auto y = 0u; y < Board::height(); ++y)
     {
-        for (auto x = 0; x < Board::width(); ++x)
+        for (auto x = 0u; x < Board::width(); ++x)
         {
             Board board;
             auto const v = Board::options().front();
 
             board.fix_option(x, y, v);
 
-            for (auto yy = 0; yy < Board::height(); ++yy)
+            for (auto yy = 0u; yy < Board::height(); ++yy)
             {
                 if (yy != y)
                 {
@@ -95,7 +95,7 @@ TEST_CASE("Fixing a value at x,y removes it from x-column and y-row")
                 }
             }
 
-            for (auto xx = 0; xx < Board::width(); ++xx)
+            for (auto xx = 0u; xx < Board::width(); ++xx)
             {
                 if (xx != x)
                 {
@@ -106,16 +106,16 @@ TEST_CASE("Fixing a value at x,y removes it from x-column and y-row")
     }
 }
 
-auto round_coord(int c)
+auto round_coord(unsigned int c)
 {
-    return 3 * (c / 3);
+    return 3u * (c / 3u);
 }
 
 TEST_CASE("Fixing a value at x,y removes it from corresponding 3x3 square")
 {
-    for (auto y = 0; y < Board::height(); ++y)
+    for (auto y = 0u; y < Board::height(); ++y)
     {
-        for (auto x = 0; x < Board::width(); ++x)
+        for (auto x = 0u; x < Board::width(); ++x)
         {
             Board board;
             auto const v = Board::options().front();
@@ -124,9 +124,9 @@ TEST_CASE("Fixing a value at x,y removes it from corresponding 3x3 square")
 
             auto const y_start = round_coord(y);
             auto const x_start = round_coord(x);
-            for (auto yy = y_start; yy < y_start + 3; ++yy)
+            for (auto yy = y_start; yy < y_start + 3u; ++yy)
             {
-                for (auto xx = x_start; xx < x_start + 3; ++xx)
+                for (auto xx = x_start; xx < x_start + 3u; ++xx)
                 {
                     if ((yy != y) || (xx != x))
                     {

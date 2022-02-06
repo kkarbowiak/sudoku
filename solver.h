@@ -14,7 +14,7 @@ class Solver
         auto get_solutions() const;
 
     private:
-        auto solve(Board board, int x, int y);
+        auto solve(Board board, unsigned int x, unsigned int y);
 
     private:
         std::vector<Board> m_solutions;
@@ -23,7 +23,7 @@ class Solver
 template<class Board>
 inline auto Solver<Board>::solve(Board board)
 {
-    solve(board, 0, 0);
+    solve(board, 0u, 0u);
 }
 
 template<class Board>
@@ -33,7 +33,7 @@ inline auto Solver<Board>::get_solutions() const
 }
 
 template<class Board>
-inline auto Solver<Board>::solve(Board board, int x, int y)
+inline auto Solver<Board>::solve(Board board, unsigned int x, unsigned int y)
 {
     if (board.is_solved())
     {
@@ -62,6 +62,6 @@ inline auto Solver<Board>::solve(Board board, int x, int y)
                 return;
             }
         }
-        x = 0;
+        x = 0u;
     }
 }

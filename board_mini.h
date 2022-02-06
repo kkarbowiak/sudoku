@@ -18,19 +18,19 @@ class BoardMini
         auto is_fixed() const;
         auto is_valid() const;
 
-        auto has_option(int x, int y, int value) const;
-        auto is_fixed_at(int x, int y) const;
-        auto fix_option(int x, int y, int value);
+        auto has_option(unsigned int x, unsigned int y, unsigned int value) const;
+        auto is_fixed_at(unsigned int x, unsigned int y) const;
+        auto fix_option(unsigned int x, unsigned int y, unsigned int value);
 
         auto is_solved() const;
 
     private:
-        auto index(int x, int y) const -> int;
+        auto index(unsigned int x, unsigned int y) const -> unsigned int;
 
     private:
-        static constexpr auto m_width = 3;
-        static constexpr auto m_height = 3;
-        static constexpr std::array m_values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        static constexpr auto m_width = 3u;
+        static constexpr auto m_height = 3u;
+        static constexpr std::array m_values = {1u, 2u, 3u, 4u, 5u, 6u, 7u, 8u, 9u};
         std::array<Options, m_width * m_height> m_options;
 };
 
@@ -59,21 +59,21 @@ inline auto BoardMini::is_valid() const
     return std::none_of(m_options.begin(), m_options.end(), [](auto option){ return option.is_empty(); });
 }
 
-inline auto BoardMini::has_option(int x, int y, int value) const
+inline auto BoardMini::has_option(unsigned int x, unsigned int y, unsigned int value) const
 {
     return m_options[index(x, y)].has(value);
 }
 
-inline auto BoardMini::is_fixed_at(int x, int y) const
+inline auto BoardMini::is_fixed_at(unsigned int x, unsigned int y) const
 {
     return m_options[index(x, y)].is_fixed();
 }
 
-inline auto BoardMini::fix_option(int x, int y, int value)
+inline auto BoardMini::fix_option(unsigned int x, unsigned int y, unsigned int value)
 {
-    for (auto yy = 0; yy < m_height; ++yy)
+    for (auto yy = 0u; yy < m_height; ++yy)
     {
-        for (auto xx = 0; xx < m_width; ++xx)
+        for (auto xx = 0u; xx < m_width; ++xx)
         {
             if (yy == y && xx == x)
             {
@@ -102,7 +102,7 @@ inline auto BoardMini::is_solved() const
     return true;
 }
 
-inline auto BoardMini::index(int x, int y) const -> int
+inline auto BoardMini::index(unsigned int x, unsigned int y) const -> unsigned int
 {
     return y * m_width + x;
 }
