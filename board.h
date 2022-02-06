@@ -19,9 +19,9 @@ class Board
         auto is_fixed() const;
         auto is_valid() const;
 
-        auto has_option(int x, int y, int value) const;
+        auto has_option(int x, int y, unsigned int value) const;
         auto is_fixed_at(int x, int y) const;
-        auto fix_option(int x, int y, int value);
+        auto fix_option(int x, int y, unsigned int value);
 
         auto is_solved() const;
 
@@ -75,7 +75,7 @@ inline auto Board::is_valid() const
             [](auto const & option){ return option.is_empty(); }); });
 }
 
-inline auto Board::has_option(int x, int y, int value) const
+inline auto Board::has_option(int x, int y, unsigned int value) const
 {
     assert(x < m_width);
     assert(y < m_height);
@@ -91,7 +91,7 @@ inline auto Board::is_fixed_at(int x, int y) const
     return m_options[y][x].is_fixed();
 }
 
-inline auto Board::fix_option(int x, int y, int value)
+inline auto Board::fix_option(int x, int y, unsigned int value)
 {
     assert(x < m_width);
     assert(y < m_height);

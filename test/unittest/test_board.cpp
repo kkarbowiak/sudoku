@@ -21,7 +21,7 @@ TEST_CASE("Board has options of 1..9")
 {
     Board const board;
 
-    REQUIRE(board.options() == std::array{1, 2, 3, 4, 5, 6, 7, 8, 9});
+    REQUIRE(board.options() == std::array{1u, 2u, 3u, 4u, 5u, 6u, 7u, 8u, 9u});
 }
 
 TEST_CASE("Board initially is not fixed")
