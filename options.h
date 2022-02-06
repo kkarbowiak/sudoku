@@ -5,6 +5,7 @@
 #include <array>
 #include <bitset>
 #include <algorithm>
+#include <limits>
 #include <cassert>
 
 
@@ -22,7 +23,7 @@ class Options
 
     private:
         static constexpr std::array m_values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        std::bitset<m_values.size()> m_options = 0b111111111;
+        std::bitset<m_values.size()> m_options = std::numeric_limits<unsigned long long int>::max();
 };
 
 constexpr auto Options::options()
