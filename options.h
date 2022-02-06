@@ -4,6 +4,8 @@
 
 #include <array>
 #include <bitset>
+#include <algorithm>
+#include <cassert>
 
 
 class Options
@@ -30,12 +32,16 @@ constexpr auto Options::options()
 
 inline auto Options::fix(int value)
 {
+    assert(std::find(m_values.begin(), m_values.end(), value) != m_values.end());
+
     m_options.reset();
     m_options.set(value - 1);
 }
 
 inline auto Options::remove(int value)
 {
+    assert(std::find(m_values.begin(), m_values.end(), value) != m_values.end());
+
     m_options.reset(value - 1);
 }
 
@@ -51,5 +57,7 @@ inline auto Options::is_fixed() const
 
 inline auto Options::has(int value) const
 {
+    assert(std::find(m_values.begin(), m_values.end(), value) != m_values.end());
+
     return m_options.test(value - 1);
 }
