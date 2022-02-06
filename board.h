@@ -3,6 +3,7 @@
 #pragma once
 
 #include "options.h"
+#include "solution.h"
 
 #include <array>
 #include <algorithm>
@@ -24,6 +25,8 @@ class Board
         auto fix_option(unsigned int x, unsigned int y, unsigned int value);
 
         auto is_solved() const;
+
+        auto get_solution() const;
 
     private:
         auto is_row_solved(unsigned int row) const -> bool;
@@ -150,6 +153,27 @@ inline auto Board::is_solved() const
         }
     }
     return true;
+}
+
+inline auto Board::get_solution() const
+{
+    Solution solution;
+
+    for (auto y = 0u; y < m_height; ++y)
+    {
+        for (auto x = 0u; x < m_width; ++x)
+        {
+            for (auto v : Options::options())
+            {
+                if (m_options[y][x].has(v))
+                {
+                    solution.m_values[y][x] = v;
+                }
+            }
+        }
+    }
+
+    return solution;
 }
 
 auto Board::is_row_solved(unsigned int row) const -> bool
