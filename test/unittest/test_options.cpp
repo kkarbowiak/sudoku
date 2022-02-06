@@ -3,6 +3,13 @@
 #include "doctest.h"
 
 
+TEST_CASE("Board has options of 1..9")
+{
+    Options const options;
+
+    REQUIRE(options.options() == std::array{1u, 2u, 3u, 4u, 5u, 6u, 7u, 8u, 9u});
+}
+
 TEST_CASE("Options initially contains values 1..9")
 {
     Options options;
