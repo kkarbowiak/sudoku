@@ -34,18 +34,15 @@ Board read_board(std::vector<std::string> input)
 
 int main(int argc, char * argv[])
 {
-    if (argc > 1)
-    {
-        Stopwatch stopwatch;
+    Stopwatch stopwatch;
 
-        auto board = argc > 2 ? read_board(std::vector<std::string>(&argv[2], &argv[argc])) : Board();
-        auto solver = Solver();
+    auto board = argc > 1 ? read_board(std::vector<std::string>(&argv[1], &argv[argc])) : Board();
+    auto solver = Solver();
 
-        stopwatch.start();
-        solver.solve(board);
-        stopwatch.stop();
+    stopwatch.start();
+    solver.solve(board);
+    stopwatch.stop();
 
-        std::cout << "Number of solutions: " << solver.get_solutions().size() << '\n';
-        std::cout << "Took: " << stopwatch.get_seconds() << " seconds.\n";
-    }
+    std::cout << "Number of solutions: " << solver.get_solutions().size() << '\n';
+    std::cout << "Took: " << stopwatch.get_seconds() << " seconds.\n";
 }
