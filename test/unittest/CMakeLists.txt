@@ -13,8 +13,8 @@ target_include_directories(unittest PRIVATE $<BUILD_INTERFACE:${PROJECT_SOURCE_D
 
 target_compile_features(unittest PRIVATE cxx_std_17)
 target_compile_options(unittest PRIVATE
-    $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:GNU>>: -Wall -Wextra -pedantic>
-    $<$<CXX_COMPILER_ID:MSVC>: /W4>)
+    $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:GNU>>: -Wall -Wextra -Werror -pedantic-errors>
+    $<$<CXX_COMPILER_ID:MSVC>: /W4 /WX>)
 
 add_test(NAME unittest COMMAND unittest)
 add_custom_target(run_unit_test ALL
