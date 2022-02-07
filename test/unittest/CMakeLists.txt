@@ -7,7 +7,8 @@ target_sources(unittest
     PRIVATE
     main.cpp
     test_options.cpp
-    test_board.cpp)
+    test_board.cpp
+    test_board_reader.cpp)
 
 target_include_directories(unittest PRIVATE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>)
 
