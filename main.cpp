@@ -1,6 +1,7 @@
 // Copyright 2022 Krzysztof Karbowiak
 
 #include "board.h"
+#include "board_reader.h"
 #include "solver.h"
 #include "stopwatch.h"
 
@@ -10,26 +11,10 @@
 #include <iostream>
 
 
-Board read_board(std::vector<std::string> input)
+auto read_board(std::vector<std::string> const & input)
 {
-    Board board;
-
-    auto y = 0;
-    for (auto values : input)
-    {
-        auto x = 0;
-        for (auto v : values)
-        {
-            if (v != '0')
-            {
-                board.fix_option(x, y, v - '0');
-            }
-            ++x;
-        }
-        ++y;
-    }
-
-    return board;
+    BoardReader const board_reader;
+    return board_reader.read_board(input);
 }
 
 int main(int argc, char * argv[])
