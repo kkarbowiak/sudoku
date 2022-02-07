@@ -1,6 +1,5 @@
 // Copyright 2022 Krzysztof Karbowiak
 
-#include "board_mini.h"
 #include "board.h"
 #include "solver.h"
 #include "stopwatch.h"
@@ -10,23 +9,6 @@
 #include <chrono>
 #include <iostream>
 
-
-BoardMini read_board_mini(std::string input)
-{
-    BoardMini board;
-
-    auto pos = 0;
-    for (auto v : input)
-    {
-        if (v != '0')
-        {
-            board.fix_option(pos % board.width(), pos / board.width(), v - '0');
-        }
-        ++pos;
-    }
-
-    return board;
-}
 
 Board read_board(std::vector<std::string> input)
 {
@@ -55,29 +37,15 @@ int main(int argc, char * argv[])
     if (argc > 1)
     {
         Stopwatch stopwatch;
-        if (argv[1] == std::string("3x3"))
-        {
-            // auto board = argc > 2 ? read_board_mini(argv[2]) : BoardMini();
-            // auto solver = Solver<BoardMini>();
 
-            // stopwatch.start();
-            // solver.solve(board);
-            // stopwatch.stop();
+        auto board = argc > 2 ? read_board(std::vector<std::string>(&argv[2], &argv[argc])) : Board();
+        auto solver = Solver();
 
-            // std::cout << "Number of solutions: " << solver.get_solutions().size() << '\n';
-            // std::cout << "Took: " << stopwatch.get_seconds() << " seconds.\n";
-        }
-        else
-        {
-            auto board = argc > 2 ? read_board(std::vector<std::string>(&argv[2], &argv[argc])) : Board();
-            auto solver = Solver();
+        stopwatch.start();
+        solver.solve(board);
+        stopwatch.stop();
 
-            stopwatch.start();
-            solver.solve(board);
-            stopwatch.stop();
-
-            std::cout << "Number of solutions: " << solver.get_solutions().size() << '\n';
-            std::cout << "Took: " << stopwatch.get_seconds() << " seconds.\n";
-        }
+        std::cout << "Number of solutions: " << solver.get_solutions().size() << '\n';
+        std::cout << "Took: " << stopwatch.get_seconds() << " seconds.\n";
     }
 }
