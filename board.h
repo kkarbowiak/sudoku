@@ -157,7 +157,7 @@ inline auto Board::is_solved() const
 
 inline auto Board::get_solution() const
 {
-    Solution solution;
+    Solution solution{};
 
     for (auto y = 0u; y < m_height; ++y)
     {
