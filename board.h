@@ -176,7 +176,7 @@ inline auto Board::get_solution() const
     return solution;
 }
 
-auto Board::is_row_solved(unsigned int row) const -> bool
+inline auto Board::is_row_solved(unsigned int row) const -> bool
 {
     for (auto v : Options::options())
     {
@@ -188,7 +188,7 @@ auto Board::is_row_solved(unsigned int row) const -> bool
     return true;
 }
 
-auto Board::is_column_solved(unsigned int column) const -> bool
+inline auto Board::is_column_solved(unsigned int column) const -> bool
 {
     for (auto v : Options::options())
     {
@@ -209,7 +209,7 @@ auto Board::is_column_solved(unsigned int column) const -> bool
     return true;
 }
 
-auto Board::is_square_solved(unsigned int square) const -> bool
+inline auto Board::is_square_solved(unsigned int square) const -> bool
 {
     switch (square)
     {
@@ -415,7 +415,7 @@ auto Board::is_square_solved(unsigned int square) const -> bool
     return false;
 }
 
-auto Board::round_coord(unsigned int coord) -> unsigned int
+inline auto Board::round_coord(unsigned int coord) -> unsigned int
 {
     return 3u * (coord / 3u);
 }
