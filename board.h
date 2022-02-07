@@ -193,7 +193,7 @@ auto Board::is_column_solved(unsigned int column) const -> bool
     for (auto v : Options::options())
     {
         bool found = false;
-        for (int r = 0; r < m_width; ++r)
+        for (auto r = 0u; r < m_width; ++r)
         {
             if (m_options[column][r].has(v))
             {
