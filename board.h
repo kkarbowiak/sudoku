@@ -137,7 +137,7 @@ inline auto Board::is_solved() const
         return false;
     }
 
-    for (int i = 0u; i < 9u; ++i)
+    for (auto i = 0u; i < 9u; ++i)
     {
         if (!is_row_solved(i))
         {
@@ -218,9 +218,9 @@ auto Board::is_square_solved(unsigned int square) const -> bool
             for (auto v = 1u; v <= 9u; ++v)
             {
                 bool found = false;
-                for (int y = 0u; y < 3u; ++y)
+                for (auto y = 0u; y < 3u; ++y)
                 {
-                    for (int x = 0u; x < 3u; ++x)
+                    for (auto x = 0u; x < 3u; ++x)
                     {
                         if (m_options[y][x].has(v))
                         {
@@ -240,9 +240,9 @@ auto Board::is_square_solved(unsigned int square) const -> bool
             for (auto v = 1u; v <= 9u; ++v)
             {
                 bool found = false;
-                for (int y = 0u; y < 3u; ++y)
+                for (auto y = 0u; y < 3u; ++y)
                 {
-                    for (int x = 3u; x < 6u; ++x)
+                    for (auto x = 3u; x < 6u; ++x)
                     {
                         if (m_options[y][x].has(v))
                         {
@@ -262,9 +262,9 @@ auto Board::is_square_solved(unsigned int square) const -> bool
             for (auto v = 1u; v <= 9u; ++v)
             {
                 bool found = false;
-                for (int y = 0u; y < 3u; ++y)
+                for (auto y = 0u; y < 3u; ++y)
                 {
-                    for (int x = 6u; x < 9u; ++x)
+                    for (auto x = 6u; x < 9u; ++x)
                     {
                         if (m_options[y][x].has(v))
                         {
@@ -284,9 +284,9 @@ auto Board::is_square_solved(unsigned int square) const -> bool
             for (auto v = 1u; v <= 9u; ++v)
             {
                 bool found = false;
-                for (int y = 3u; y < 6u; ++y)
+                for (auto y = 3u; y < 6u; ++y)
                 {
-                    for (int x = 0u; x < 3u; ++x)
+                    for (auto x = 0u; x < 3u; ++x)
                     {
                         if (m_options[y][x].has(v))
                         {
@@ -306,9 +306,9 @@ auto Board::is_square_solved(unsigned int square) const -> bool
             for (auto v = 1u; v <= 9u; ++v)
             {
                 bool found = false;
-                for (int y = 3u; y < 6u; ++y)
+                for (auto y = 3u; y < 6u; ++y)
                 {
-                    for (int x = 3u; x < 6u; ++x)
+                    for (auto x = 3u; x < 6u; ++x)
                     {
                         if (m_options[y][x].has(v))
                         {
@@ -328,9 +328,9 @@ auto Board::is_square_solved(unsigned int square) const -> bool
             for (auto v = 1u; v <= 9u; ++v)
             {
                 bool found = false;
-                for (int y = 3u; y < 6u; ++y)
+                for (auto y = 3u; y < 6u; ++y)
                 {
-                    for (int x = 6u; x < 9u; ++x)
+                    for (auto x = 6u; x < 9u; ++x)
                     {
                         if (m_options[y][x].has(v))
                         {
@@ -350,9 +350,9 @@ auto Board::is_square_solved(unsigned int square) const -> bool
             for (auto v = 1u; v <= 9u; ++v)
             {
                 bool found = false;
-                for (int y = 6u; y < 9u; ++y)
+                for (auto y = 6u; y < 9u; ++y)
                 {
-                    for (int x = 0u; x < 3u; ++x)
+                    for (auto x = 0u; x < 3u; ++x)
                     {
                         if (m_options[y][x].has(v))
                         {
@@ -372,9 +372,9 @@ auto Board::is_square_solved(unsigned int square) const -> bool
             for (auto v = 1u; v <= 9u; ++v)
             {
                 bool found = false;
-                for (int y = 6u; y < 9u; ++y)
+                for (auto y = 6u; y < 9u; ++y)
                 {
-                    for (int x = 3u; x < 6u; ++x)
+                    for (auto x = 3u; x < 6u; ++x)
                     {
                         if (m_options[y][x].has(v))
                         {
@@ -394,9 +394,9 @@ auto Board::is_square_solved(unsigned int square) const -> bool
             for (auto v = 1u; v <= 9u; ++v)
             {
                 bool found = false;
-                for (int y = 6u; y < 9u; ++y)
+                for (auto y = 6u; y < 9u; ++y)
                 {
-                    for (int x = 6u; x < 9u; ++x)
+                    for (auto x = 6u; x < 9u; ++x)
                     {
                         if (m_options[y][x].has(v))
                         {
