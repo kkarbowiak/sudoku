@@ -2,10 +2,11 @@
 
 #pragma once
 
+#include "board.h"
+
 #include <vector>
 
 
-template<class Board>
 class Solver
 {
     public:
@@ -14,26 +15,23 @@ class Solver
         auto get_solutions() const;
 
     private:
-        auto solve(Board board, unsigned int x, unsigned int y);
+        auto solve(Board board, unsigned int x, unsigned int y) -> void;
 
     private:
         std::vector<Board> m_solutions;
 };
 
-template<class Board>
-inline auto Solver<Board>::solve(Board board)
+inline auto Solver::solve(Board board)
 {
     solve(board, 0u, 0u);
 }
 
-template<class Board>
-inline auto Solver<Board>::get_solutions() const
+inline auto Solver::get_solutions() const
 {
     return m_solutions;
 }
 
-template<class Board>
-inline auto Solver<Board>::solve(Board board, unsigned int x, unsigned int y)
+inline auto Solver::solve(Board board, unsigned int x, unsigned int y) -> void
 {
     if (board.is_solved())
     {

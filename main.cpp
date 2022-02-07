@@ -57,20 +57,20 @@ int main(int argc, char * argv[])
         Stopwatch stopwatch;
         if (argv[1] == std::string("3x3"))
         {
-            auto board = argc > 2 ? read_board_mini(argv[2]) : BoardMini();
-            auto solver = Solver<BoardMini>();
+            // auto board = argc > 2 ? read_board_mini(argv[2]) : BoardMini();
+            // auto solver = Solver<BoardMini>();
 
-            stopwatch.start();
-            solver.solve(board);
-            stopwatch.stop();
+            // stopwatch.start();
+            // solver.solve(board);
+            // stopwatch.stop();
 
-            std::cout << "Number of solutions: " << solver.get_solutions().size() << '\n';
-            std::cout << "Took: " << stopwatch.get_seconds() << " seconds.\n";
+            // std::cout << "Number of solutions: " << solver.get_solutions().size() << '\n';
+            // std::cout << "Took: " << stopwatch.get_seconds() << " seconds.\n";
         }
         else
         {
             auto board = argc > 2 ? read_board(std::vector<std::string>(&argv[2], &argv[argc])) : Board();
-            auto solver = Solver<Board>();
+            auto solver = Solver();
 
             stopwatch.start();
             solver.solve(board);
