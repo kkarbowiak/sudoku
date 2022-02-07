@@ -7,9 +7,9 @@
 
 struct Solution
 {
-    static constexpr auto m_width = 9;
-    static constexpr auto m_height = 9;
-    std::array<std::array<int, m_width>, m_height> m_values;
+    static constexpr auto m_width = 9u;
+    static constexpr auto m_height = 9u;
+    std::array<std::array<unsigned int, m_width>, m_height> m_values;
 };
 
 inline auto operator==(Solution const & lhs, Solution const & rhs)
