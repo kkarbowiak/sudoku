@@ -3,6 +3,7 @@
 #pragma once
 
 #include "board.h"
+#include "solution.h"
 
 #include <vector>
 
@@ -18,7 +19,7 @@ class Solver
         auto solve(Board board, unsigned int x, unsigned int y) -> void;
 
     private:
-        std::vector<Board> m_solutions;
+        std::vector<Solution> m_solutions;
 };
 
 inline auto Solver::solve(Board board)
@@ -35,7 +36,7 @@ inline auto Solver::solve(Board board, unsigned int x, unsigned int y) -> void
 {
     if (board.is_solved())
     {
-        m_solutions.push_back(board);
+        m_solutions.push_back(board.get_solution());
         return;
     }
 
