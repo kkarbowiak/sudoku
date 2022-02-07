@@ -8,7 +8,8 @@ target_sources(unittest
     main.cpp
     test_options.cpp
     test_board.cpp
-    test_board_reader.cpp)
+    test_board_reader.cpp
+    test_solver.cpp)
 
 target_include_directories(unittest PRIVATE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>)
 
