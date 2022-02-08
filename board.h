@@ -167,7 +167,7 @@ inline auto Board::get_solution() const
             {
                 if (m_options[y][x].has(v))
                 {
-                    solution.m_values[y][x] = v;
+                    solution.values[y][x] = v;
                 }
             }
         }
