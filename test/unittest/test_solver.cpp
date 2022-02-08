@@ -20,9 +20,7 @@ TEST_CASE("Solver identifies a solved board and returns it as a solution")
     Solver solver;
     solver.solve(board);
 
-    auto solutions = solver.get_solutions();
-
-    REQUIRE(solutions == std::vector<Solution>{{{{
+    REQUIRE(solver.get_solutions() == std::vector<Solution>{{{{
         {{5u, 3u, 4u, 6u, 7u, 8u, 9u, 1u, 2u}},
         {{6u, 7u, 2u, 1u, 9u, 5u, 3u, 4u, 8u}},
         {{1u, 9u, 8u, 3u, 4u, 2u, 5u, 6u, 7u}},
@@ -50,9 +48,7 @@ TEST_CASE("Solver finds and returns a single solution")
     Solver solver;
     solver.solve(board);
 
-    auto solutions = solver.get_solutions();
-
-    REQUIRE(solutions == std::vector<Solution>{{{{
+    REQUIRE(solver.get_solutions() == std::vector<Solution>{{{{
         {{5u, 3u, 4u, 6u, 7u, 8u, 9u, 1u, 2u}},
         {{6u, 7u, 2u, 1u, 9u, 5u, 3u, 4u, 8u}},
         {{1u, 9u, 8u, 3u, 4u, 2u, 5u, 6u, 7u}},
