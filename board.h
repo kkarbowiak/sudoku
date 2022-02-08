@@ -193,9 +193,9 @@ inline auto Board::is_column_solved(unsigned int column) const -> bool
     for (auto v : Options::options())
     {
         bool found = false;
-        for (auto r = 0u; r < m_width; ++r)
+        for (auto y = 0u; y < m_height; ++y)
         {
-            if (m_options[column][r].has(v))
+            if (m_options[y][column].has(v))
             {
                 found = true;
                 break;
