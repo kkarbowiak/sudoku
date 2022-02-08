@@ -157,6 +157,8 @@ inline auto Board::is_solved() const
 
 inline auto Board::get_solution() const
 {
+    assert(is_fixed());
+
     Solution solution{};
 
     for (auto y = 0u; y < m_height; ++y)
