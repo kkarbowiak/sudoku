@@ -99,6 +99,8 @@ inline auto Board::fix_option(unsigned int x, unsigned int y, unsigned int value
     assert(x < m_width);
     assert(y < m_height);
 
+    auto valid = true;
+
     m_options[y][x].fix(value);
 
     for (auto xx = 0u; xx < m_width; ++xx)
@@ -106,6 +108,10 @@ inline auto Board::fix_option(unsigned int x, unsigned int y, unsigned int value
         if (xx != x)
         {
             m_options[y][xx].remove(value);
+            if (m_options[y][xx].is_empty())
+            {
+                valid = false;
+            }
         }
     }
     for (auto yy = 0u; yy < m_height; ++yy)
@@ -113,6 +119,10 @@ inline auto Board::fix_option(unsigned int x, unsigned int y, unsigned int value
         if (yy != y)
         {
             m_options[yy][x].remove(value);
+            if (m_options[yy][x].is_empty())
+            {
+                valid = false;
+            }
         }
     }
 
@@ -125,9 +135,15 @@ inline auto Board::fix_option(unsigned int x, unsigned int y, unsigned int value
             if (yy != y || xx != x)
             {
                 m_options[yy][xx].remove(value);
+                if (m_options[yy][xx].is_empty())
+                {
+                    valid = false;
+                }
             }
         }
     }
+
+    return valid;
 }
 
 inline auto Board::is_solved() const

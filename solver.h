@@ -51,8 +51,7 @@ inline auto Solver::solve(Board board, unsigned int x, unsigned int y) -> void
                     if (board.has_option(x, y, v))
                     {
                         auto copy = board;
-                        copy.fix_option(x, y, v);
-                        if (copy.is_valid())
+                        if (copy.fix_option(x, y, v))
                         {
                             solve(copy, x, y);
                         }
